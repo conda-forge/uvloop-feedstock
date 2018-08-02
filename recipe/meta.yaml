@@ -1,7 +1,7 @@
 {% set name = "uvloop" %}
-{% set version = "0.11.0" %}
+{% set version = "0.11.1" %}
 {% set hash_type = "sha256" %}
-{% set hash_value = "34138af5f6ced8f2f2ba39b487119988f5055245223a330de71957c8a6713b84" %}
+{% set hash_value = "54be0ce6213e5488fd2332ae52f4ff20800aaf9bfe3d08f3422bc71a035903c8" %}
 
 package:
   name: {{ name|lower }}
