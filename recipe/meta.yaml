@@ -1,20 +1,17 @@
 {% set name = "uvloop" %}
 {% set version = "0.13.0" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "942cd07035510b149d6160796f4e972137130ae953871b6a98c2cf5d5ab68c2e" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash_value }}
+  sha256: 942cd07035510b149d6160796f4e972137130ae953871b6a98c2cf5d5ab68c2e
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+  script: "{{ PYTHON }} -m pip install . -vv"
   skip: True  # [py2k or win]
 
 requirements:
@@ -24,6 +21,7 @@ requirements:
   host:
     - python
     - pip
+    - cython ==0.29.10
   run:
     - python
 
