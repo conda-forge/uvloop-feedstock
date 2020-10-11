@@ -12,7 +12,7 @@ source:
     - 0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch
 
 build:
-  number: 1
+  number: 2
   script: "{{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always'"
   skip: True  # [py2k or win]
 
