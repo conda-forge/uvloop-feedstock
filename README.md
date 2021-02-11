@@ -233,5 +233,6 @@ Feedstock Maintainers
 =====================
 
 * [@carlodri](https://github.com/carlodri/)
+* [@jakirkham](https://github.com/jakirkham/)
 * [@nehaljwani](https://github.com/nehaljwani/)
 
