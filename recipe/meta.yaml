@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always'
-  skip: true  # [py2k or win]
+  skip: true  # [py<37 or win]
 
 requirements:
   build:
