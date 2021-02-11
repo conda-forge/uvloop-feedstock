@@ -3,7 +3,7 @@ About uvloop
 
 Home: http://github.com/MagicStack/uvloop
 
-Package license: MIT
+Package license: MIT OR Apache-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/uvloop-feedstock/blob/master/LICENSE.txt)
 
