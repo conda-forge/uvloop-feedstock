@@ -12,8 +12,8 @@ source:
     - 0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch
 
 build:
-  number: 2
-  script: "{{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always'"
+  number: 3
+  script: "{{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always' --global-option='--use-system-libuv'"
   skip: True  # [py2k or win]
 
 requirements:
@@ -27,8 +27,10 @@ requirements:
     - python
     - cython >=0.28
     - pip
+    - libuv
   run:
     - python
+    - {{ pin_compatible("libuv", max_pin="x") }}
 
 test:
   imports:
