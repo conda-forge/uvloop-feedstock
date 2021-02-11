@@ -38,8 +38,7 @@ test:
 
 about:
   home: http://github.com/MagicStack/uvloop
-  # Multiple licenses! : Apache 2.0, MIT
-  license: MIT
+  license: MIT OR Apache-2.0
   license_file: LICENSE-MIT
   summary: Ultra fast implementation of asyncio event loop on top of libuv.
   description: |
