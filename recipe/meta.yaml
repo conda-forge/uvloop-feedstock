@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always'
+  script: {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always' --global-option='--use-system-libuv'
   skip: true  # [py<37 or win]
 
 requirements:
@@ -24,8 +24,10 @@ requirements:
     - python
     - cython >=0.28
     - pip
+    - libuv
   run:
     - python
+    - {{ pin_compatible("libuv", max_pin="x") }}
 
 test:
   imports:
