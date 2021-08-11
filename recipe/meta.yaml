@@ -1,5 +1,5 @@
 {% set name = "uvloop" %}
-{% set version = "0.15.3" %}
+{% set version = "0.16.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 905f0adb0c09c9f44222ee02f6b96fd88b493478fffb7a345287f9444e926030
+  sha256: f74bc20c7b67d1c27c72601c78cf95be99d5c2cdd4514502b4f3eb0933ff1228
   patches:
     - 0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch
 
