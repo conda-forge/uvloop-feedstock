@@ -25,7 +25,7 @@ requirements:
     - make  # [unix]
   host:
     - python
-    - cython >=0.28
+    - cython <3
     - pip
     - libuv
   run:
