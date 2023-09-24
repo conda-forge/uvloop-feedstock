@@ -12,7 +12,7 @@ source:
     - 0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always' --global-option='--use-system-libuv'
   skip: true  # [py<37 or win]
 
@@ -20,12 +20,12 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython                                 # [build_platform != target_platform]
+    - cython <3                              # [build_platform != target_platform]
     - {{ compiler('c') }}
     - make  # [unix]
   host:
     - python
-    - cython >=0.28
+    - cython <3
     - pip
     - libuv
   run:
