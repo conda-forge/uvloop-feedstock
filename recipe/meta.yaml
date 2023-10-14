@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   script:
-    - export CFLAGS="-std=gnu99 $CFLAGS"  # [linux]
+    - export CFLAGS="${CFLAGS} -std=gnu99"  # [linux]
     - {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always' --global-option='--use-system-libuv'
   skip: true  # [py<37 or win]
 
