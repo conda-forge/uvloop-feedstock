@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always' --global-option='--use-system-libuv'
-  skip: true  # [py<37 or win]
+  skip: true  # [py<38 or win]
 
 requirements:
   build:
