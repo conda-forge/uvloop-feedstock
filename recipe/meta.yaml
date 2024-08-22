@@ -1,5 +1,5 @@
 {% set name = "uvloop" %}
-{% set version = "0.19.0" %}
+{% set version = "0.20.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0246f4fd1bf2bf702e06b0d45ee91677ee5c31242f39aab4ea6fe0c51aedd0fd
+  sha256: 4603ca714a754fc8d9b197e325db25b2ea045385e8a3ad05d3463de725fdf469
   patches:
     - 0001-Prefer-SO_REUSEPORT-over-uv.SO_REUSEPORT.patch
 
@@ -21,8 +21,8 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython <3                              # [build_platform != target_platform]
-    - sysroot_{{ target_platform }} 2.17     # [linux and cdt_name == "cos7"]
-    - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
     - make  # [unix]
   host:
     - python
