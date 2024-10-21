@@ -9,8 +9,6 @@ Package license: MIT OR Apache-2.0
 
 Summary: Ultra fast implementation of asyncio event loop on top of libuv.
 
-Development: https://github.com/MagicStack/uvloop
-
 Documentation: http://uvloop.readthedocs.org
 
 uvloop is a fast, drop-in replacement of the built-in asyncio event loop.
