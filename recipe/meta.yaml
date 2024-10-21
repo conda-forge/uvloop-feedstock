@@ -16,10 +16,11 @@ build:
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - setuptools                             # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython >=3,<4                          # [build_platform != target_platform]
+    - python                                 # [build_platform != target_platform]
+    - setuptools >=60                        # [build_platform != target_platform]
+    - wheel                                  # [build_platform != target_platform]
     - make                                   # [unix]
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
@@ -28,7 +29,8 @@ requirements:
     - libuv
     - pip
     - python
-    - setuptools
+    - setuptools >=60
+    - wheel
   run:
     - python
     - {{ pin_compatible("libuv", max_pin="x") }}
