@@ -1,0 +1,15 @@
+diff --git a/setup.py b/setup.py
+index 32d94ae..b6fcfaf 100644
+--- a/setup.py
++++ b/setup.py
+@@ -83,8 +83,8 @@ class uvloop_build_ext(build_ext):
+ 
+     def initialize_options(self):
+         super().initialize_options()
+-        self.use_system_libuv = False
+-        self.cython_always = False
++        self.use_system_libuv = True
++        self.cython_always = True
+         self.cython_annotate = None
+         self.cython_directives = None
+ 
