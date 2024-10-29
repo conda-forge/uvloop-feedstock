@@ -1,39 +1,45 @@
-{% set name = "uvloop" %}
 {% set version = "0.21.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: uvloop
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/u/uvloop/uvloop-{{ version }}.tar.gz
   sha256: 3bf12b0fda68447806a7ad847bfa591613177275d35b6724b1ee573faa3704e3
 
 build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . -vv --global-option='build_ext' --global-option='--cython-always' --global-option='--use-system-libuv'
+  number: 1
   skip: true  # [py<38 or win]
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings="--build-option=build_ext" --config-settings="--build-option=--cython-always" --config-settings="--build-option=--use-system-libuv"
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython <3                              # [build_platform != target_platform]
+    - cython >=3,<4                          # [build_platform != target_platform]
+    - python                                 # [build_platform != target_platform]
+    - make                                   # [unix]
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
-    - make  # [unix]
   host:
-    - python
-    - cython <3
-    - pip
+    - cython >=3,<4
     - libuv
+    - pip
+    - python
+    - setuptools >=60
+    - wheel
   run:
     - python
     - {{ pin_compatible("libuv", max_pin="x") }}
 
 test:
+  requires:
+    - pip
   imports:
     - uvloop
+  commands:
+    - pip check
 
 about:
   home: http://github.com/MagicStack/uvloop
@@ -46,7 +52,7 @@ about:
     uvloop is a fast, drop-in replacement of the built-in asyncio event loop.
     uvloop is implemented in Cython and uses libuv under the hood.
   doc_url: http://uvloop.readthedocs.org
-  dev_url: https://github.com/MagicStack/uvloop
+  dev_url: http://github.com/MagicStack/uvloop
 
 extra:
   recipe-maintainers:
