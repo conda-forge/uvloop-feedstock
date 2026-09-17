@@ -5,11 +5,15 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/u/uvloop/uvloop-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/u/uvloop/uvloop-{{ version }}.tar.gz
   sha256: 6c84bae345b9147082b17371e3dd5d42775bddce91f885499017f4607fdaf39f
+  patches:
+    # setup.py imports pkg_resources, which setuptools 82 no longer ships.
+    # Merged upstream after 0.22.1; drop this once a release contains it.
+    - patches/0001-fix-use-packaging-instead-of-relying-on-pkg_resources.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<38 or win]
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings="--build-option=build_ext" --config-settings="--build-option=--cython-always" --config-settings="--build-option=--use-system-libuv"
@@ -25,6 +29,7 @@ requirements:
   host:
     - cython >=3,<4
     - libuv
+    - packaging >=20
     - pip
     - python
     - setuptools >=60
