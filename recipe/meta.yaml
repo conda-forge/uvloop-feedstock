@@ -1,4 +1,4 @@
-{% set version = "0.22.1" %}
+{% set version = "0.23.0" %}
 
 package:
   name: uvloop
@@ -6,14 +6,14 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/u/uvloop/uvloop-{{ version }}.tar.gz
-  sha256: 6c84bae345b9147082b17371e3dd5d42775bddce91f885499017f4607fdaf39f
+  sha256: 28d160f51ab4da3b187063652e643dea6831072add4adc1e6d62afbe73b6be27
   patches:
     # setup.py imports pkg_resources, which setuptools 82 no longer ships.
     # Merged upstream after 0.22.1; drop this once a release contains it.
     - patches/0001-fix-use-packaging-instead-of-relying-on-pkg_resources.patch
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py<38 or win]
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings="--build-option=build_ext" --config-settings="--build-option=--cython-always" --config-settings="--build-option=--use-system-libuv"
