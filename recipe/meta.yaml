@@ -13,7 +13,7 @@ source:
     - patches/0001-fix-use-packaging-instead-of-relying-on-pkg_resources.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<38 or win]
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --config-settings="--build-option=build_ext" --config-settings="--build-option=--cython-always" --config-settings="--build-option=--use-system-libuv"
